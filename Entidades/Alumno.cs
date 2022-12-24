@@ -3,12 +3,10 @@ using System;
 
 namespace CoreEscuela.Entidades
 {
-    public class Alumno
+    public class Alumno:ObjetoEscuelaBase
     {
-        public string UniqueId { get; private set; }
-        public string Nombre { get; set; }
+    
         // inicializar la lista de evaluaciones
         public List<Evaluacion> Evaluaciones { get; set; } = new List<Evaluacion>();
-        public Alumno() => UniqueId = Guid.NewGuid().ToString();
     }
 }
