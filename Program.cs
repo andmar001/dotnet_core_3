@@ -16,6 +16,23 @@ namespace CoreEscuela
             Printer.Beep(1000, cantidad:2);
             ImpimirCursosEscuela(engine.Escuela);
 
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.WriteTitle("Prueba de polimorfismo");
+           
+            var alumnoTest = new Alumno { Nombre = "Claire Underwood" };
+           
+            ObjetoEscuelaBase ob = alumnoTest;
+
+            Printer.WriteTitle("Alumno");
+            WriteLine("Alumno: " + alumnoTest.Nombre);
+            WriteLine("Alumno: " + alumnoTest.UniqueId);
+            
+
+            Printer.WriteTitle("ObjetoEscuelaBase"); 
+            WriteLine("Alumno: " + ob.Nombre);
+            WriteLine("Alumno: " + ob.UniqueId);
         }
 
         private static void ImpimirCursosEscuela(Escuela escuela)
