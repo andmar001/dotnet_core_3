@@ -80,3 +80,6 @@ Es la habilidad de un objeto de tomar múltiples formas. En la programación ori
 
 # Parametros de entrada y salida
 Los parametros opcionales siempre deben ir al final de la lista de parametros 
+
+# IReadOnlyList
+Es una interfaz que nos permite crear objetos que no se pueden modificar, solo se pueden leer

@@ -123,7 +123,7 @@ namespace CoreEscuela
             return listaObj;
         }
         //sobrecarga del método GetObjetosEscuela, develve una lista y un conteo de evaluaciones -- tupla
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList <ObjetoEscuelaBase> GetObjetosEscuela(
                                 out int conteoEvaluaciones,
                                 out int conteoAlumnos,
                                 out int conteoAsignaturas,
@@ -165,10 +165,10 @@ namespace CoreEscuela
                 }
             }
 
-            return listaObj;
+            return listaObj.AsReadOnly();
         }
         //sobrecarga del método GetObjetosEscuela
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
                                 bool traeEvaluaciones = true,
                                 bool traeAlumnos= true,
                                 bool traeAsignaturas= true,
@@ -178,7 +178,7 @@ namespace CoreEscuela
             return GetObjetosEscuela(out int dummy, out dummy, out dummy, out dummy, traeEvaluaciones, traeAlumnos, traeAsignaturas, traeCursos);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
                                 out int conteoEvaluaciones,
                                 bool traeEvaluaciones = true,
                                 bool traeAlumnos= true,
@@ -189,7 +189,7 @@ namespace CoreEscuela
             return GetObjetosEscuela(out conteoEvaluaciones, out int dummy, out dummy, out dummy, traeEvaluaciones, traeAlumnos, traeAsignaturas, traeCursos);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
                                 out int conteoEvaluaciones,
                                 out int conteoCursos,
                                 bool traeEvaluaciones = true,
@@ -201,7 +201,7 @@ namespace CoreEscuela
             return GetObjetosEscuela(out conteoEvaluaciones, out conteoCursos,out int dummy, out dummy, traeEvaluaciones, traeAlumnos, traeAsignaturas, traeCursos);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
                                 out int conteoEvaluaciones,
                                 out int conteoCursos,
                                 out int conteoAsignaturas,

@@ -25,12 +25,12 @@ namespace CoreEscuela
                 out int conteoCursos
             );
 
+
             // var listaILugar = from obj in listaObjetos
             //                   where obj is Escuela
             //                   select (Escuela)obj;
             //implementacion de interfaz
             // engine.Escuela.LimpiarLugar();
-
 
         }
 
