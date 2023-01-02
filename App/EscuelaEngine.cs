@@ -122,5 +122,40 @@ namespace CoreEscuela
 
             return listaObj;
         }
+        //sobrecarga del método GetObjetosEscuela, develve una lista y un conteo de evaluaciones -- tupla
+        public (List<ObjetoEscuelaBase>,int) GetObjetosEscuela(
+                                bool traeEvaluaciones = true,
+                                bool traeAlumnos= true,
+                                bool traeAsignaturas= true,
+                                bool traeCursos= true
+        )
+        {
+            int conteoEvaluaciones = 0;
+            var listaObj = new List<ObjetoEscuelaBase>();
+
+            listaObj.Add(Escuela);
+            if(traeCursos)
+                listaObj.AddRange(Escuela.Cursos);
+            
+            foreach (var curso in Escuela.Cursos)
+            {
+                if(traeAsignaturas)
+                    listaObj.AddRange(curso.Asignaturas);
+    
+                if(traeAlumnos)
+                    listaObj.AddRange(curso.Alumnos);
+                
+                if (traeEvaluaciones)
+                {
+                    foreach (var alumno in curso.Alumnos)
+                    {
+                        listaObj.AddRange(alumno.Evaluaciones);
+                        conteoEvaluaciones += alumno.Evaluaciones.Count; //cuenta el número de evaluaciones
+                    }
+                }
+            }
+
+            return (listaObj, conteoEvaluaciones);
+        }
     }
 }

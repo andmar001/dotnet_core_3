@@ -17,14 +17,14 @@ namespace CoreEscuela
             Printer.Beep(1000, cantidad:1);
             ImpimirCursosEscuela(engine.Escuela);
 
-            var listaObjetos = engine.GetObjetosEscuela();
+            var listaObjetos = engine.GetObjetosEscuela(true, false,false,false);
 
-            var listaILugar = from obj in listaObjetos
-                              where obj is Escuela
-                              select (Escuela)obj;
-
+            // var listaILugar = from obj in listaObjetos
+            //                   where obj is Escuela
+            //                   select (Escuela)obj;
             //implementacion de interfaz
-            engine.Escuela.LimpiarLugar();
+            // engine.Escuela.LimpiarLugar();
+
 
         }
 
