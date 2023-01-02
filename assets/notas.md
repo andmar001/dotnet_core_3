@@ -83,3 +83,22 @@ Los parametros opcionales siempre deben ir al final de la lista de parametros
 
 # IReadOnlyList
 Es una interfaz que nos permite crear objetos que no se pueden modificar, solo se pueden leer
+
+# Diccionarios
+Los diccionarios son una estructura de datos que nos permite almacenar datos de la forma llave-valor. La llave es un identificador único que nos permite acceder a los datos almacenados en el diccionario. Los diccionarios son muy útiles cuando queremos almacenar datos de forma asociativa, es decir, cuando queremos acceder a los datos a través de un identificador único.
+Ejemplos de diccionarios:
+
+Dictionary<int, string> diccionario = new Dictionary<int, string>();
+    diccionario.Add(10, "Antonio");
+    diccionario.Add(23, "Lorem insum");
+
+    foreach (var keyValPair in diccionario)
+    {
+        WriteLine($"Key: {keyValPair.Key}, Value: {keyValPair.Value}");
+    }
+    Printer.WriteTitle("Acceso a diccionario");
+    WriteLine(diccionario[23]);
+    diccionario[0] = "Nuevo valor";
+    WriteLine(diccionario[0]);
+- llaves    
+Las llaves de un diccionario deben ser únicas, es decir, no pueden existir dos llaves iguales en un diccionario. Si intentamos añadir una llave que ya existe en el diccionario, se producirá una excepción.
