@@ -22,7 +22,7 @@ namespace CoreEscuela
                 out int conteoEvaluaciones,
                 out int conteoAlumnos,
                 out int conteoAsignaturas,
-                out int conteoCursos                           
+                out int conteoCursos
             );
 
             // var listaILugar = from obj in listaObjetos
