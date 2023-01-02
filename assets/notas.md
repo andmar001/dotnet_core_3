@@ -75,3 +75,5 @@ Es la habilidad de un objeto de tomar múltiples formas. En la programación ori
         Console.WriteLine("El objeto no es un alumno");
     }
             - 
+
+- toString podemos sobreescribir el metodo toString para que nos devuelva el nombre de la clase y el nombre del objeto
