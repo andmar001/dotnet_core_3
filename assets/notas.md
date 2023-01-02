@@ -77,3 +77,6 @@ Es la habilidad de un objeto de tomar múltiples formas. En la programación ori
             - 
 
 - toString podemos sobreescribir el metodo toString para que nos devuelva el nombre de la clase y el nombre del objeto
+
+# Parametros de entrada y salida
+Los parametros opcionales siempre deben ir al final de la lista de parametros 
