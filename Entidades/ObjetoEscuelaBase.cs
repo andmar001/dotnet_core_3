@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CoreEscuela.Entidades
 {
-    public class ObjetoEscuelaBase
+    public abstract class ObjetoEscuelaBase
     {
         public string UniqueId { get; private set; }
         public string Nombre { get; set; }
