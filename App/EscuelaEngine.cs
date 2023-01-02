@@ -25,6 +25,7 @@ namespace CoreEscuela
 
         }
 
+        #region Métodos de carga
         private void CargarEvaluaciones()
         {
             var lista = new List<Evaluacion>(); 
@@ -99,7 +100,7 @@ namespace CoreEscuela
                 c.Alumnos = GenerarAlumnosAlAzar(cantRandom);
             }
         }
-    
+        #endregion    
         //devuelve todos los objetos de la escuela
         public List<ObjetoEscuelaBase> GetObjetosEscuela()
         {

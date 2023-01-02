@@ -20,11 +20,11 @@ namespace CoreEscuela
             var listaObjetos = engine.GetObjetosEscuela();
 
             var listaILugar = from obj in listaObjetos
-                              where obj is Alumno
-                              select (Alumno)obj;
+                              where obj is Escuela
+                              select (Escuela)obj;
 
             //implementacion de interfaz
-            // engine.Escuela.LimpiarLugar();
+            engine.Escuela.LimpiarLugar();
 
         }
 
