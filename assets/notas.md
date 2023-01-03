@@ -105,3 +105,6 @@ Las llaves de un diccionario deben ser únicas, es decir, no pueden existir dos 
 
 - struct
 Las estructuras son tipos de datos que nos permiten almacenar varios valores en una sola variable. Las estructuras son tipos de datos que nos permiten almacenar varios valores en una sola variable. Las estructuras son tipos de datos que nos permiten almacenar varios valores en una sola variable.
+
+- Eventos
+Los eventos son una forma de notificar a otros objetos de que algo ha ocurrido. Los eventos son una forma de notificar a otros objetos de que algo ha ocurrido. Los eventos son una forma de notificar a otros objetos de que algo ha ocurrido.
