@@ -102,3 +102,6 @@ Dictionary<int, string> diccionario = new Dictionary<int, string>();
     WriteLine(diccionario[0]);
 - llaves    
 Las llaves de un diccionario deben ser únicas, es decir, no pueden existir dos llaves iguales en un diccionario. Si intentamos añadir una llave que ya existe en el diccionario, se producirá una excepción.
+
+- struct
+Las estructuras son tipos de datos que nos permiten almacenar varios valores en una sola variable. Las estructuras son tipos de datos que nos permiten almacenar varios valores en una sola variable. Las estructuras son tipos de datos que nos permiten almacenar varios valores en una sola variable.

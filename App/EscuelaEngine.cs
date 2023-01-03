@@ -25,13 +25,36 @@ namespace CoreEscuela
 
         }
 
-        public Dictionary<string, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
-            var diccionario = new Dictionary<string, IEnumerable<ObjetoEscuelaBase>>();
 
-            diccionario.Add("Escuela", new[] {Escuela});
-            diccionario.Add("Cursos", Escuela.Cursos.Cast<ObjetoEscuelaBase>()); //conversion de tipo
+            var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();
 
+            diccionario.Add(LlaveDiccionario.Escuela, new[]{ Escuela});
+            diccionario.Add(LlaveDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+
+            var listaTmp =  new List<Evaluacion>();
+            var listaTmpAsig = new List<Asignatura>();
+            var listaTmpAlum = new List<Alumno>();
+
+            foreach (var cur in Escuela.Cursos)
+            {
+                listaTmpAsig.AddRange(cur.Asignaturas);
+                listaTmpAlum.AddRange(cur.Alumnos);
+                
+                foreach (var alumno in cur.Alumnos)
+                {
+                    listaTmp.AddRange(alumno.Evaluaciones);
+                }       
+            }
+            diccionario.Add(LlaveDiccionario.Evaluacion, 
+                                    listaTmp.Cast<ObjetoEscuelaBase>());         
+
+            diccionario.Add(LlaveDiccionario.Asignatura,
+                                    listaTmpAsig.Cast<ObjetoEscuelaBase>());
+
+            diccionario.Add(LlaveDiccionario.Alumno,
+                                    listaTmpAlum.Cast<ObjetoEscuelaBase>());
             return diccionario;
         }
 
