@@ -28,7 +28,8 @@ namespace CoreEscuela
            
             var dictTemp = engine.GetDiccionarioObjetos();
 
-            engine.ImprimirDiccionario(dictTemp);
+            Printer.WriteTitle("Con evaluaciones");
+            engine.ImprimirDiccionario(dictTemp, true);
         }
 
         private static void ImpimirCursosEscuela(Escuela escuela)
