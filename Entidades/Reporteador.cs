@@ -69,15 +69,20 @@ namespace CoreEscuela.Entidades
 
             foreach (var asigConEval in dicEvalPorAsignatura)
             {
-                var dummy = from eval in asigConEval.Value
-                            
-                            group eval by new { eval.Alumno.UniqueId, eval.Nota}
+                var promediosAlumnos = from eval in asigConEval.Value
+                            group eval by new {
+                                eval.Alumno.UniqueId,
+                                eval.Alumno.Nombre
+                            }
                             into grupoEvalsAlumno
-                            select new 
+                            select new AlumnoPromedio
                             {
-                                AlumnoId = grupoEvalsAlumno.Key,
-                                Promedio = grupoEvalsAlumno.Average(evaluacion => evaluacion.Nota)
+                                alumnoId = grupoEvalsAlumno.Key.UniqueId,
+                                alumnoNombre = grupoEvalsAlumno.Key.Nombre,
+                                promedio = grupoEvalsAlumno.Average(evaluacion => evaluacion.Nota)
                             };
+
+                respuesta.Add(asigConEval.Key, promediosAlumnos);
             }
 
             return respuesta;
