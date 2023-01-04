@@ -82,6 +82,7 @@ namespace CoreEscuela
                     listaTmp.AddRange(alumno.Evaluaciones);
                 }       
             }
+            //convierte la lista de evaluaciones en un arreglo de objetos escuela base por cast
             diccionario.Add(LlaveDiccionario.Evaluacion, 
                                     listaTmp.Cast<ObjetoEscuelaBase>());         
 
