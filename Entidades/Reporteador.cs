@@ -1,3 +1,4 @@
+using System.Data;
 using System.Linq;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,28 @@ namespace CoreEscuela.Entidades
 
             return dicRespuesta;
 
+        }
+
+        public Dictionary<string, IEnumerable<object>> GetPromedioPorAsignatura()
+        {
+            var respuesta = new Dictionary<string, IEnumerable<object>>();
+
+            var dicEvalPorAsignatura = GetDiccionarioEvaluacionXAsignatura();
+
+            foreach (var asigConEval in dicEvalPorAsignatura)
+            {
+                var dummy = from eval in asigConEval.Value
+                            
+                            group eval by new { eval.Alumno.UniqueId, eval.Nota}
+                            into grupoEvalsAlumno
+                            select new 
+                            {
+                                AlumnoId = grupoEvalsAlumno.Key,
+                                Promedio = grupoEvalsAlumno.Average(evaluacion => evaluacion.Nota)
+                            };
+            }
+
+            return respuesta;
         }
     }
 }

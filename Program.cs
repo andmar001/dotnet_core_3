@@ -19,10 +19,12 @@ namespace CoreEscuela
             engine.Inicializar();
             Printer.WriteTitle("BIENVENIDOS A LA ESCUELA");
             
+            //Reportes
             var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
             var evalList = reporteador.GetListaEvaluaciones();
             var listaAsignaturas = reporteador.GetListaAsignatura(); //que asignaturas hay
             var listaAsignaturasConEval = reporteador.GetDiccionarioEvaluacionXAsignatura(); //que asignaturas hay
+            var listaPromedioXAsignatura = reporteador.GetPromedioPorAsignatura(); //promedio por asignatura
         }
 
         private static void AccionDelEvento(object sender, EventArgs e)
@@ -34,9 +36,7 @@ namespace CoreEscuela
 
         private static void ImpimirCursosEscuela(Escuela escuela)
         {
-            
             Printer.WriteTitle("Cursos de la Escuela");
-            
             
             if (escuela?.Cursos != null)
             {
@@ -46,5 +46,6 @@ namespace CoreEscuela
                 }
             }
         }
+
     }
 }
