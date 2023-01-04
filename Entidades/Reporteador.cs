@@ -27,19 +27,37 @@ namespace CoreEscuela.Entidades
                 return new List<Evaluacion>();
             }
         }
-        //Obtener solo la lista de asignaturas
+
         public IEnumerable<string>GetListaAsignatura()
         {
-            var listaEvaluaciones = GetListaEvaluaciones();
+            return GetListaAsignatura(out var dummy);
+        }
+        //Obtener solo la lista de asignaturas
+        public IEnumerable<string>GetListaAsignatura( out IEnumerable<Evaluacion> listaEvaluaciones)
+        {
+            listaEvaluaciones = GetListaEvaluaciones();
 
             return (from Evaluacion eval in listaEvaluaciones
                    select eval.Asignatura.Nombre).Distinct();
         }
-
+        //Obtener el diccionario de evaluaciones por asignatura
         public Dictionary<string, IEnumerable<Evaluacion>> GetDiccionarioEvaluacionXAsignatura()
         {
             var dicRespuesta = new Dictionary<string, IEnumerable<Evaluacion>>();
-            
+
+            var listaAsignaturas = GetListaAsignatura(out var listaEval);
+
+            foreach (var asig in listaAsignaturas)
+            {
+                var evalsAsign = from eval in listaEval
+                                 where eval.Asignatura.Nombre == asig
+                                 select eval;
+
+                dicRespuesta.Add(asig, evalsAsign);
+            }
+
+            return dicRespuesta;
+
         }
     }
 }
