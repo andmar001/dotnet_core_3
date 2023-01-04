@@ -16,17 +16,30 @@ namespace CoreEscuela.Entidades
         }
 
         // reporte de lista de evaluacioness
-        public IEnumerable<Escuela> GetListaEvaluaciones()
+        public IEnumerable<Evaluacion> GetListaEvaluaciones()
         {
-            IEnumerable<Escuela> rta;
-            if(_diccionario.TryGetValue(LlaveDiccionario.Escuela, out IEnumerable<ObjetoEscuelaBase> lista))
+            IEnumerable<Evaluacion> rta;
+            if(_diccionario.TryGetValue(LlaveDiccionario.Evaluacion, out IEnumerable<ObjetoEscuelaBase> lista))
             {
-                rta = lista.Cast<Escuela>();
+                return lista.Cast<Evaluacion>();
             }
             {
-                rta = null;
+                return new List<Evaluacion>();
             }
-            return rta;
+        }
+        //Obtener solo la lista de asignaturas
+        public IEnumerable<string>GetListaAsignatura()
+        {
+            var listaEvaluaciones = GetListaEvaluaciones();
+
+            return (from Evaluacion eval in listaEvaluaciones
+                   select eval.Asignatura.Nombre).Distinct();
+        }
+
+        public Dictionary<string, IEnumerable<Evaluacion>> GetDiccionarioEvaluacionXAsignatura()
+        {
+            var dicRespuesta = new Dictionary<string, IEnumerable<Evaluacion>>();
+            
         }
     }
 }
