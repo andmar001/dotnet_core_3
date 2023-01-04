@@ -87,5 +87,44 @@ namespace CoreEscuela.Entidades
 
             return respuesta;
         }
+
+        //Challenge 1
+        // - Crear un reporte que muestre solo los mejores X promedios por asignatura
+        // - x debe ser un parametro de entrada
+        // - El reporre contiene la asignatura y una lista de los top x alumnos con su promedio
+         
+        public Dictionary<string, IEnumerable<object>> GetMejoresPromedioPorAsignatura(int x)
+        {
+            var respuesta = new Dictionary<string, IEnumerable<object>>();
+
+            var dicEvalPorAsignatura = GetDiccionarioEvaluacionXAsignatura();
+
+            foreach (var asigConEval in dicEvalPorAsignatura)
+            {
+                var promediosAlumnos = from eval in asigConEval.Value
+                            group eval by new {
+                                eval.Alumno.UniqueId,
+                                eval.Alumno.Nombre
+                            }
+                            into grupoEvalsAlumno
+                            select new AlumnoPromedio
+                            {
+                                alumnoId = grupoEvalsAlumno.Key.UniqueId,
+                                alumnoNombre = grupoEvalsAlumno.Key.Nombre,
+                                promedio = grupoEvalsAlumno.Average(evaluacion => evaluacion.Nota)
+                            };
+
+                var mejoresPromedios = (from prom in promediosAlumnos
+                                        orderby prom.promedio descending
+                                        select prom).Take(x);
+
+                respuesta.Add(asigConEval.Key, mejoresPromedios);
+            }
+
+            return respuesta;
+        }
+
+
+
     }
 }

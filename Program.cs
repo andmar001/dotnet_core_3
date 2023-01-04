@@ -33,6 +33,16 @@ namespace CoreEscuela
                     var tmp = alumno as Alumno;       
                 }
             }
+            
+            var listaPromedioXAlumno = reporteador.GetMejoresPromedioPorAsignatura(1); //promedio por alumno
+
+            foreach (var item in listaPromedioXAlumno)
+            {
+                foreach (var alumno in item.Value)
+                {
+                    var tmp = alumno as Alumno;       
+                }
+            }
         }
 
         private static void AccionDelEvento(object sender, EventArgs e)
