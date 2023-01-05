@@ -26,21 +26,56 @@ namespace CoreEscuela
             var listaAsignaturasConEval = reporteador.GetDiccionarioEvaluacionXAsignatura(); //que asignaturas hay
             var listaPromedioXAsignatura = reporteador.GetPromedioPorAsignatura(); //promedio por asignatura
             
-            foreach (var item in listaPromedioXAsignatura)
-            {
-                foreach (var alumno in item.Value)
-                {
-                    var tmp = alumno as Alumno;       
-                }
-            }
-            
-            var listaPromedioXAlumno = reporteador.GetMejoresPromedioPorAsignatura(1); //promedio por alumno
+            var listaPromedioXAlumno = reporteador.GetMejoresPromedioPorAsignatura(3); //promedio por alumno
 
-            foreach (var item in listaPromedioXAlumno)
+            Printer.WriteTitle("Captura de una evaluación por consola");
+            var newEval = new Evaluacion();
+            string nombre;
+            string notaString;
+            float nota;
+            
+            WriteLine("Ingrese el nombre de la evaluación");
+            Printer.PresioneENTER();
+            nombre = Console.ReadLine();
+            if (string.IsNullOrEmpty(nombre))
             {
-                foreach (var alumno in item.Value)
+                Printer.WriteTitle("El valor del nombre no puede ser vacio");
+                WriteLine("Saliendo del programa");
+            }
+            else
+            {
+                newEval.Nombre = nombre.ToLower();
+                WriteLine("El nombre de la evaluación ha sido ingresado correctamente");
+            }
+            //nota
+            WriteLine("Ingrese la nota de la evaluación");
+            Printer.PresioneENTER();
+            notaString = Console.ReadLine();
+            if (string.IsNullOrEmpty(notaString))
+            {
+                Printer.WriteTitle("El valor de la nota no puede ser vacio");
+                WriteLine("Saliendo del programa");
+            }
+            else
+            {
+                try
                 {
-                    var tmp = alumno as Alumno;       
+                    newEval.Nota = float.Parse(notaString);
+                    if (newEval.Nota < 0 || newEval.Nota > 5)
+                    {
+                        throw new ArgumentOutOfRangeException("La nota debe estar entre 0 y 5");
+                    }
+                    WriteLine("La nota de la evaluación ha sido ingresado correctamente");
+                }
+                catch(ArgumentOutOfRangeException arge)
+                {
+                    Printer.WriteTitle(arge.Message);
+                    WriteLine("Saliendo del programa");
+                }
+                catch(Exception)
+                {
+                    Printer.WriteTitle("El valor de la nota no es un número válido");
+                    WriteLine("Saliendo del programa");                
                 }
             }
         }
